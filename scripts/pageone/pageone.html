@@ -3,4 +3,9 @@
   <!-- ng-click is a built in angular directive -->
   <!-- give it a function that it can call on your controller -->
   <button ng-click="toPageTwo()">To Page Two</button>
+  <!-- this template is controlled by pageoneCtrl -->
+  <!-- as we defined in our app.js when configuring our app -->
+  <!-- which means this directive, is going to have the same scope -->
+  <div show-text></div>
+  <!-- the above line is the "$element" in the show-text directive -->
 </div>
