@@ -15,7 +15,8 @@ angular.module('livecodeApp').directive('showText', function(){
     //when we use a directive in html we use snake-case.
     //this is because html likes snake-case and javascript likes camelCase.
     //showText in js = show-text in HTML
-    restrict: 'AE',
+    restrict: 'E',
+    scope: {textToShow: "="},
     //this is a path to our template.
     //good practice says to name this the same as the js file.
     //but with .html obvs. tos obvs.
@@ -26,6 +27,14 @@ angular.module('livecodeApp').directive('showText', function(){
     templateUrl: '/scripts/directives/show-text.html',
     //where magic happens. In case you were wondering.
     link: function($scope, $element, $attrs){
+      // because we are using an isolate scope now
+      //(beccause we have a scope)
+      //we are only restricting this directive to Elements.
+      //if you can 'see' the directive go restrict E.
+      //isolate scopes are typically only restrict E.
+      //you can only have one isolate scope on a directive.
+      //you define an isolate scope by giving the directive object a "scope" key, which you hand an object.
+
 
       //the scope here is a reference to the parent objects $scope.
       //meaning it will have the same scope as the ctrl that holds this directive.

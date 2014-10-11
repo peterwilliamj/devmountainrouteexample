@@ -13,6 +13,8 @@ angular.module('livecodeApp').controller('pagetwoCtrl', function($scope, $locati
     });
   }
 
+  $scope.text2 = "test text or something";
+
   function getText(){
     //$q is angulars promise library.
     //you must include that at the top when you define your controller.

@@ -6,7 +6,13 @@
   <!-- this template is controlled by pageoneCtrl -->
   <!-- as we defined in our app.js when configuring our app -->
   <!-- which means this directive, is going to have the same scope -->
-  <div show-text>
-  </div>
+  <show-text text-to-show="text"></show-text>
+  <show-text text-to-show="anotherText"></show-text>
   <!-- the above line is the "$element" in the show-text directive -->
+  <div class="get-name-directive">
+    <!-- here we pass the get-my-name directive data for it's scope -->
+    <!-- we do that by assigning the name attribute to a value from our scope -->
+    <span>My Name in the controller: {{scopeName}}</span>
+    <get-my-name name="scopeName" nick-name="scopeNickName"></get-my-name>
+  </div>
 </div>
