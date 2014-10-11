@@ -16,7 +16,14 @@ angular.module('livecodeApp').directive('showText', function(){
     //this is because html likes snake-case and javascript likes camelCase.
     //showText in js = show-text in HTML
     restrict: 'AE',
-    template: '<div>This text is showing!</div>',
+    //this is a path to our template.
+    //good practice says to name this the same as the js file.
+    //but with .html obvs. tos obvs.
+    //use a templateUrl if your directive has more than one line.
+    // template: '<div>' +
+    //               'this is my text here' +
+    //           '</div>'
+    templateUrl: '/scripts/directives/show-text.html',
     //where magic happens. In case you were wondering.
     link: function($scope, $element, $attrs){
       //the scope here is a reference to the parent objects $scope.
@@ -31,12 +38,10 @@ angular.module('livecodeApp').directive('showText', function(){
       //but we can find things like if there are other restrict 'A' directives on this directive.
 
       //we can define whatever want here. =)
-      //$scope.clicked = function(){
-
-      // }
+      $scope.textClicked = function(){
+        alert("this text was clicked");
+      }
 
     }
-
-
   }
 })
