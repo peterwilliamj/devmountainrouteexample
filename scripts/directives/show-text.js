@@ -26,6 +26,7 @@ angular.module('livecodeApp').directive('showText', function(){
     templateUrl: '/scripts/directives/show-text.html',
     //where magic happens. In case you were wondering.
     link: function($scope, $element, $attrs){
+
       //the scope here is a reference to the parent objects $scope.
       //meaning it will have the same scope as the ctrl that holds this directive.
 
@@ -41,6 +42,12 @@ angular.module('livecodeApp').directive('showText', function(){
       $scope.textClicked = function(){
         alert("this text was clicked");
       }
+
+      //you can bind events to the $element like jquery.
+      //but why not use angulars ng-click method instead?
+      // $element.bind('click', function(){
+      //   alert("hello")
+      // })
 
     }
   }
