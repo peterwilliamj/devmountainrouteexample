@@ -36,6 +36,10 @@ app.config(['$routeProvider', function($routeProvider){
         }
       }
     })
+    .when('/badideas', {
+      templateUrl: '/scripts/badideas/badIdeas.html',
+      controller: 'badIdeasCtrl'
+    })
 }])
 
 //resolve will prevent the template and the controller in the route from being shown until it gets the data it wants.

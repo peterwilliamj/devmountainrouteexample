@@ -23,10 +23,63 @@ app.use(function(req, res, next) {
   //in production you probably want to limit that to your domain.
   res.header('Access-Control-Allow-Origin', '*');
   //Here we define the methods we're willing to accept.
-  res.header('Access-Control-Allow-Methods', 'OPTIONS, GET, POST');
+  res.header('Access-Control-Allow-Methods', 'OPTIONS, GET, POST, DELETE, PUT');
   //just use this one.
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   next();
+});
+
+//you should use a persistant database in real life. 
+//for now we're going to hold everything in memory.
+//we're going to generate an "ID" for our new objects by using the timestamp at the time it was created.
+//we can do that by using new Date().getTime();
+var badIdeas = [
+  {
+    id: new Date().getTime(),
+    submitter: 'Jake Lingwall',
+    title: 'Facebook for Cats',
+    description: 'This would be an app for my cats to FINALLY be able to social network.'
+  }
+];
+
+app.get('/api/badideas/v1', function(req, res){
+  res.send(badIdeas);
+});
+
+app.post('/api/badideas/v1', function(req, res){
+  var newIdea = req.body;
+  newIdea.id = new Date().getTime();
+  badIdeas.push(req.body);
+  res.send(200);
+});
+
+app.put('/api/badideas/v1', function(req, res){
+  //here we going to loop through badIdeas to find the right object to update.
+  for(var i in badIdeas){
+    //if the ID's match it's the right object.
+    //once again need to type match first. 
+    //too lazy right now to do that.
+    if(badIdeas[i].id == req.body.id){
+      //so we update that here!
+      badIdeas[i] = req.body;
+    }
+  }
+  res.send(200);
+});
+
+app.delete('/api/badideas/v1/:id', function(req, res){
+  for(var i in badIdeas){
+    //if the ID's match it's the right object.
+    //there is some funky type conversion here.
+    //handle this better. 
+    if(badIdeas[i].id == req.params.id){
+      //so we update that here!
+      //remove the idea from the array. =)
+      badIdeas.splice(i, 1);
+      console.log(badIdeas);
+    }
+  }
+  res.send(200);
 });
 
 

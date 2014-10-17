@@ -1,0 +1,40 @@
+<div class="bad-ideas">
+  <div ng-repeat="idea in ideas">
+    <div>
+      <span>
+        Submitted by: <strong>{{idea.submitter}}</strong>
+      </span>
+      <span>
+        Idea: <strong>{{idea.title}}</strong>
+      </span>
+    </div>
+    <div>
+      {{idea.description}}
+    </div>
+    <button ng-click="deleteIdea()">delete this idea</button>
+    <button ng-click="editIdea()">Edit Idea</button>
+  </div>
+  <div>
+    <button ng-click="refreshIdeas()">Refresh Ideas</button>
+  </div>
+  <div ng-show="!update" style="margin-top: 25px;">
+    <span>Submitter: </span>
+    <input ng-model="newIdea.submitter" placeholder="submitter"/>
+    <span>Title: </span>
+    <input ng-model="newIdea.title" placeholder="title"/>
+    <span>Description: </span>
+    <input ng-model="newIdea.description" placeholder="description"/>
+    <button ng-click="postNewIdea()">Post Your Great New Idea!</button>  
+  </div>
+  <!-- this is the same view copy/pasted for edit. -->
+  <!-- probably better ways to do this.   -->
+  <div ng-show="update" style="margin-top: 25px;">
+    <span>Submitter: </span>
+    <input ng-model="ideaToEdit.submitter" placeholder="submitter"/>
+    <span>Title: </span>
+    <input ng-model="ideaToEdit.title" placeholder="title"/>
+    <span>Description: </span>
+    <input ng-model="ideaToEdit.description" placeholder="description"/>
+    <button ng-click="updateIdea()">Update Your Great New Idea!</button>  
+  </div>
+</div>
