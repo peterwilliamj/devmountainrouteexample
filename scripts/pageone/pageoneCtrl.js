@@ -15,6 +15,11 @@ angular.module('livecodeApp').controller('pageoneCtrl', function($scope, $locati
 //this is common function($scope, serviceName, otherServiceName)
   $scope.proof = "I told you guys this would work.";
 
+  $scope.text = "Where is the pizza Landon?";
+  $scope.anotherText = "Seriously, bro.";
+
+  $scope.scopeName = "";
+  $scope.scopeNickName = "Johnny Boy";
 
 //$ in angular means it's built in angular magic. 
 //$location is therefore an angular service we can use.

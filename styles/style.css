@@ -1,0 +1,11 @@
+body{
+  color: red;
+  font-size: 36px;
+}
+.show-text-class{
+  color: green;
+}
+.get-name-directive{
+  padding-top: 20px;
+  color: black;
+}

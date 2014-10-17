@@ -2,4 +2,9 @@
   {{pageTwoProof}}
   <!-- don't forget the () at the end of the function name! -->
   <button ng-click="toPageOne()">To Page One</button>
+  <button ng-click="showText()">Show Text!</button>
+  <!-- ng-show === ng-hide. Same thing but differnet side of the coin   -->
+  <div ng-show="showingText">This is the promise text.</div>
+  <!-- don't mind us. Just dropping in a sweet element directive here. -->
+  <show-text text-to-show="text2"></show-text>
 </div>

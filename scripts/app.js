@@ -21,6 +21,33 @@ app.config(['$routeProvider', function($routeProvider){
     })
     .when('/pagetwo', {
       templateUrl: './scripts/pagetwo/pagetwo.html',
-      controller: 'pagetwoCtrl'
+      controller: 'pagetwoCtrl',
+      resolve: {
+
+                data: function($timeout, $q){
+
+                        var deferred = $q.defer();
+
+                        $timeout(function(){
+                          deferred.resolve("Jake was Here");
+                        }, 5000);
+
+                        return deferred.promise;
+        }
+      }
+    })
+    .when('/badideas', {
+      templateUrl: '/scripts/badideas/badIdeas.html',
+      controller: 'badIdeasCtrl'
     })
 }])
+
+//resolve will prevent the template and the controller in the route from being shown until it gets the data it wants.
+//generally used for $http requests to get dynamic data from the web.
+//here we are creating a promise, to slow our resolve down by 5 seconds.
+//resolve will not display the template/ctrl until the object gets it's data.
+//In this example. until key "data" get's it's value, pagetwo will not be shown.
+//when it does get it's value, "data" is accessible in the controller if we require it by name in the controller definition
+//angular.module('appname').controller('controllername', function($scope, data){
+  //alert(data) <-- we can use data now!
+// })
